@@ -1,0 +1,16 @@
+---
+timezone_path: /usr/share/zoneinfo/America/Argentina/Buenos_Aires
+necessary_packages:
+    - htop
+    - git
+    - vim-tiny
+    - unzip
+server_users:
+    - name: test
+      id: 1500
+      group: testing
+      password: testing
+      shell: bash
+server_groups:
+    - name: testing
+      gid: 1500

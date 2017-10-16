@@ -1,0 +1,11 @@
+--- 
+- name: set timezome of the server
+  become: yes
+  become_user: root
+  become_method: sudo
+  #shell: rm /etc/localtime && ln -s  /usr/share/zoneinfo/America/Argentina/Buenos_Aires  /etc/localtime
+  file:
+          src: "{{ timezone_path }}"
+          dest: /etc/localtime
+          state: link
+

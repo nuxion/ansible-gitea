@@ -1,0 +1,11 @@
+---
+- name: install debian packages 
+  become: yes
+  become_user: root
+  become_method: sudo
+  apt:
+    pkg: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items: "{{ necessary_packages }}"
+

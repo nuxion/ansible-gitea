@@ -1,0 +1,2 @@
+[git-remote]
+debian-dev ansible_user="{{ admin_user }}" ansible_ssh_pass="{{ admin_pass }}" ansible_become_pass="{{ admin_pass }}"

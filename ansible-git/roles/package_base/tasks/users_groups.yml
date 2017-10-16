@@ -1,0 +1,24 @@
+---
+- name: Add groups
+  become: yes
+  become_user: root
+  become_method: sudo
+  group:
+      name: "{{ item.name }}"
+      state: present
+      gid: "{{ item.gid }}"
+  with_items: "{{ server_groups }}"
+
+
+- name: Add users 
+  become: yes
+  become_user: root
+  become_method: sudo 
+  user: 
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    state: present
+    uid: "{{ item.uid }}" 
+    group: "{{ item.group }}"
+    password: "{{ item.password }}"
+  with_items: "{{ server_users }}"
