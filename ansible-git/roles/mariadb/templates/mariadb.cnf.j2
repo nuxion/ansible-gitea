@@ -1,101 +1,23 @@
+# The MariaDB configuration file
 #
-# The MySQL database server configuration file.
+# The MariaDB/MySQL tools read configuration files in the following order:
+# 1. "/etc/mysql/mariadb.cnf" (this file) to set global defaults,
+# 2. "/etc/mysql/conf.d/*.cnf" to set global options.
+# 3. "/etc/mysql/mariadb.conf.d/*.cnf" to set MariaDB-only options.
+# 4. "~/.my.cnf" to set user-specific options.
 #
-# For explanations see
-# http://dev.mysql.com/doc/mysql/en/server-system-variables.html
-
-[client]
-port        = {{ mysql_port }}
-socket      = /var/run/mysqld/mysqld.sock
-
-[mysqld_safe]
-socket      = /var/run/mysqld/mysqld.sock
-nice        = 0
-
-[mysqld]
-# * Basic Settings
-user        = mysql
-pid-file    = /var/run/mysqld/mysqld.pid
-socket      = /var/run/mysqld/mysqld.sock
-port        = {{ mysql_port }}
-basedir     = /usr
-datadir     = /var/lib/mysql
-tmpdir      = /tmp
-# language is for pre-5.5. In 5.5 it is an alias for lc_messages_dir.
-language = {{ mysql_language }}
-bind-address = {{ mysql_bind_address }}
-skip-external-locking
-
-
-# * Fine Tuning
-thread_stack            = {{ mysql_thread_stack }}
-thread_cache_size       = {{ mysql_cache_size }}
-max_connections         = {{ mysql_max_connections }}
-table_open_cache        = {{ mysql_query_cache_size }}
-max_allowed_packet      = {{ mysql_max_allowed_packet }}
-# ** Not compatible with 5.7
-key_buffer              = {{ mysql_key_buffer }}
-myisam-recover          = BACKUP
-thread_concurrency      = {{ mysql_thread_concurrency }}
-
-# ** Query Cache Configuration
-query_cache_limit       = {{ mysql_query_cache_limit }}
-query_cache_size        = {{ mysql_query_cache_size }}
-
-# ** Logging and Replication
-#general_log_file        = /var/log/mysql/mysql.log
-#general_log             = 1
+# If the same option is defined multiple times, the last one will apply.
 #
-#log_slow_queries   = /var/log/mysql/mysql-slow.log
-#long_query_time = 2
-#log-queries-not-using-indexes
-#
-# The following can be used as easy to replay backup logs or for replication.
-#server-id      = 1
-#log_bin            = /var/log/mysql/mysql-bin.log
-expire_logs_days    = 10
-max_binlog_size     = 100M
-#binlog_do_db       = include_database_name
-#binlog_ignore_db   = include_database_name
-
-# ** InnoDB
-# InnoDB is enabled by default with a 10MB datafile in /var/lib/mysql/.
-# Read the manual for more InnoDB related options. There are many!
-innodb_flush_log_at_trx_commit = {{ mysql_innodb_flush_log_at_trx_commit }}
-innodb_buffer_pool_size = {{ mysql_innodb_buffer_pool_size }}
-innodb_lock_wait_timeout = {{ mysql_innodb_lock_wait_timeout }}
-innodb_log_buffer_size = {{ mysql_innodb_log_buffer_size }}
-innodb_log_file_size = {{ mysql_innodb_log_file_size }} 
-{{ mysql_innodb_file_per_table }} 
-
-# ** Security Features
-# Read the manual, too, if you want chroot!
-# chroot = /var/lib/mysql/
-#
-# For generating SSL certificates I recommend the OpenSSL GUI "tinyca".
-# ssl-ca=/etc/mysql/cacert.pem
-# ssl-cert=/etc/mysql/server-cert.pem
-# ssl-key=/etc/mysql/server-key.pem
-
-character_set_server = {{ mysql_character_set_server }}
-collation_server = {{ mysql_collation_server }}
-
-# ** Full-Text Search
-ft_min_word_len = 4
-
-[mysqldump]
-quick
-quote-names
-max_allowed_packet  = {{ mysql_mysqldump_max_allowed_packet }}
-
-[mysql]
-#no-auto-rehash # faster start of mysql but no tab completition
-
-[isamchk]
-key_buffer      = 16M
+# One can use all long options that the program supports.
+# Run program with --help to get a list of available options and with
+# --print-defaults to see which it would actually understand and use.
 
 #
-# * IMPORTANT: Additional settings that can override those from this file!
-#   The files must end with '.cnf', otherwise they'll be ignored.
+# This group is read both both by the client and the server
+# use it for options that affect everything
 #
+[client-server]
+
+# Import all .cnf files from configuration directory
 !includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/

@@ -9,3 +9,19 @@
       mode: 0644
   notify:
       - restart mysql
+ 
+- name: MySQL | Update the 50-mysql-clients
+  template:
+      src: "{{ item }}.j2"
+      dest: "/etc/mysql/mariadb.conf.d/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+  with_items:
+      - 50-client.cnf
+      - 50-mysql-clients.cnf
+      - 50-mysqld_safe.cnf
+      - 50-server.cnf
+  notify:
+      - restart mysql
+

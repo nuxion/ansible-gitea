@@ -2,7 +2,6 @@
 # Taken from: https://github.com/ANXS/mysql/blob/master/defaults/main.yml
 # Basic settings
 mysql_port: 3306
-#mysql_bind_address: "0.0.0.0"
 mysql_bind_address: "localhost"
 mysql_default_root_password: ''
 mysql_root_password: 'CHANGEME'
@@ -46,6 +45,6 @@ mysql_users: []
 
 # List of apt packages to install
 mysql_packages:
-   - mysql-server
-   - mysql-client
    - python-mysqldb
+   - mariadb-server
+   - mariadb-client
