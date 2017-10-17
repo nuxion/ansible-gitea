@@ -1,0 +1,13 @@
+---
+- name: MySQL | Make sure the MySQL packages are installed
+  apt:
+      pkg: "{{ item }}"
+      update_cache: yes
+      cache_valid_time: 3600
+      #with_items: "{{ mysql_packages }}"
+  with_items: "{{ mysql_packages }}"
+
+- name: MySQL | Ensure MySQL is running
+  service:
+      name: mysql
+      state: started

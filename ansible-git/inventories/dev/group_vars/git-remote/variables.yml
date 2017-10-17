@@ -1,0 +1,6 @@
+necessary_packages:
+    - htop
+    - git
+    - vim-tiny
+    - unzip
+    - golang

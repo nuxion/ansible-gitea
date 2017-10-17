@@ -1,0 +1,5 @@
+admin_user: nuxion
+git_user: git
+include_vars: vault.yml
+admin_pass: "{{ vault_admin_pass }}"
+git_user_pass: "{{ vault_git_user_pass }}" 

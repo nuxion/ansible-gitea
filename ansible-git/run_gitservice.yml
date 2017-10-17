@@ -1,0 +1,12 @@
+---
+- hosts: git-remote
+  vars:
+      server_users:
+         - name: "{{ git_user }}"
+           shell: bash
+           uid: 1501
+           password: "{{ git_user_password }}"
+           group: git
+      server_groups:
+         - name: git
+           gid: 1601

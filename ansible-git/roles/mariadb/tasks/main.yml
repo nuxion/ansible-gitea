@@ -1,0 +1,19 @@
+---
+- name: Install Mysql Packages
+  include: install.yml
+  tags: ["mysql","mysql:install"]
+
+- name: Configure MySQL instance
+  include: configure.yml
+  tags: ["mysql","mysql:install", "mysql:config"]
+
+- name: Config databases
+  include: databases.yml
+  tags: ["mysql","mysql:install", "mysql:config"]
+
+- name: Config Users
+  include: users.yml
+  tags: ["mysql","mysql:install", "mysql:config"]
+
+
+
