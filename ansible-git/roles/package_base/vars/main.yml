@@ -1,4 +1,0 @@
----
-# Vars default for the role
-
-timezone_path: /usr/share/zoneinfo/America/Argentina/Buenos_Aires
