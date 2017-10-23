@@ -3,4 +3,7 @@ necessary_packages:
     - git
     - vim-tiny
     - unzip
-    - golang
+    - golang 
+include: vault.yml
+gitea_mysql_root_pass: "{{ vault_gitea_mysql_root_password }}"
+gitea_mysql_user_pass: "{{ vault_gitea_mysql_user_password }}"

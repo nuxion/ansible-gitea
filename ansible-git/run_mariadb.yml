@@ -1,0 +1,22 @@
+---
+# Rol para crear una instancia de mysql y configurar las bases
+# basado en https://github.com/ANXS/mysql
+- hosts: git-remote
+  vars:
+      mysql_root_password: '{{ gitea_mysql_root_pass }}'
+      mysql_bind_address: 'localhost'
+      mysql_databases:
+          - name: gitea
+            collation: "utf8_general_ci"
+            encoding: "utf8"
+      mysql_users:
+          - name: gitea
+            pass: '{{ gitea_mysql_user_pass }}'
+            priv: "*.*:ALL"
+            host: "%"
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+     - mariadb
+
