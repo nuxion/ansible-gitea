@@ -7,4 +7,4 @@
     state: present
     host: "{{item.host | default('localhost')}}"
   with_items: "{{ mysql_users }}"
-  when: "{{ mysql_users|length > 0 }}"
+  when: "mysql_users|length > 0 "
