@@ -1,2 +1,13 @@
----
-include_task: structure_and_copy_files.yml
+--- 
+- name: Install service_systemd
+  include: service_systemd.yml
+  tags: ["gitea", "gitea:install"]
+- name: Structure and coping files
+  include: structure_and_copy_files.yml
+  tags: ["gitea", "gitea:install"]
+- name: Import Mysql
+  include: import_mysql.yml
+  tags: ["gitea", "gitea:install"]
+- name: Config Gitea
+  include: configini.yml
+  tags: ["gitea", "gitea:config"]

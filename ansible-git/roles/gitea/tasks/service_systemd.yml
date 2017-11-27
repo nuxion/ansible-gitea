@@ -1,0 +1,7 @@
+---
+- name: Create gitea service
+  template:
+      src: gitea.service.j2
+      dest: /lib/systemd/system/
+      owner: root
+      group: root

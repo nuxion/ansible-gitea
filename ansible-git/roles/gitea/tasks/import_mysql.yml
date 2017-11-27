@@ -1,0 +1,13 @@
+---
+- name: cp to remote server
+  copy:
+      src: gitea.sql
+      dest: "{{ gitea_home }}"
+- name: import MySQL
+  mysql_db:
+      state: import
+      name: gitea
+      target: "{{ gitea_home }}/gitea.sql"
+      login_host: "{{ gitea_db }}"
+      login_user: "{{ gitea_db_user }}"
+      login_password: "{{ gitea_db_pass }}"

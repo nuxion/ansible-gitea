@@ -1,0 +1,23 @@
+---
+# Ansible Role Vars
+fileserver: /home/nuxion/base_soft
+gitea_home: /opt/gitea 
+gitea_user: git
+gitea_group: git
+gitea_dl: gitea-1.3-linux-amd64
+# gitea.ini vars
+## database, assume mysql
+gitea_db: localhost
+gitea_db_host: localhost:3306 #specify the port
+gitea_db_name: gitea
+gitea_db_user: gitea
+gitea_db_pass: gitea
+## repository
+gitea_repo_path: /opt/gitea/repositories
+## server
+gitea_server_domain: localhost
+gitea_server_port: 3000
+gitea_server_url: http://localhost:3000/
+gitea_server_ssh: false
+gitea_server_ssh_port: 22
+gitea_server_offline: false

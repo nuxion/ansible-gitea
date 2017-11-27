@@ -8,4 +8,13 @@
   file:
       state: directory
       path: "{{ gitea_home }}/custom/conf"
+- name: Copy gitea
+  copy:
+      src: "{{ fileserver }}/gitea/{{ gitea_dl }}"
+      dest: "{{ gitea_home  }}/gitea"
+      mode: u+rwx
+      owner: "{{ gitea_user }}"
+      group: "{{ gitea_group }}"
+
+
 

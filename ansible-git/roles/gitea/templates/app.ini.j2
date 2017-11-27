@@ -4,23 +4,23 @@ RUN_MODE = prod
 
 [database]
 DB_TYPE  = mysql
-HOST     = localhost:3306
-NAME     = gitea
-USER     = gitea
-PASSWD   = _g1tea2017
+HOST     = {{ gitea_db_host }}
+NAME     = {{ gitea_db_name }}
+USER     = {{ gitea_db_user }}
+PASSWD   = {{ gitea_db_pass }}
 SSL_MODE = disable
 PATH     = data/gitea.db
 
 [repository]
-ROOT = /home/git/gitea-repositories
+ROOT = {{ gitea_repo_path }}
 
 [server]
-SSH_DOMAIN   = localhost
-HTTP_PORT    = 3000
-ROOT_URL     = http://localhost:3000/
-DISABLE_SSH  = false
-SSH_PORT     = 22
-OFFLINE_MODE = false
+SSH_DOMAIN   = {{ gitea_server_domain }}
+HTTP_PORT    = {{ gitea_server_port }}
+ROOT_URL     = {{ gitea_server_url }}
+DISABLE_SSH  = {{ gitea_server_ssh }}
+SSH_PORT     = {{ gitea_server_ssh_port }}
+OFFLINE_MODE = {{ gitea_server_offline }}
 
 [mailer]
 ENABLED = false

@@ -1,0 +1,10 @@
+---
+- name: Copy gitea.ini template
+  template:
+      src: app.ini.j2
+      dest: "{{ gitea_home  }}/custom/conf"
+      owner: "{{ gitea_user }}"
+      group: "{{ gitea_group }}"
+      mode: 0640
+  notify:
+      - restart gitea
