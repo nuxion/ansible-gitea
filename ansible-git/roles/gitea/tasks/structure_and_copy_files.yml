@@ -1,0 +1,11 @@
+---
+- name: Create Gitea Home Dir
+  file:
+      state: directory
+      path: "{{ gitea_home  }}"
+      owner: "{{ gitea_user }}"
+- name: Tree structure
+  file:
+      state: directory
+      path: "{{ gitea_home }}/custom/conf"
+
